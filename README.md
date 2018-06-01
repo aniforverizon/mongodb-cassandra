@@ -89,7 +89,7 @@ or
 java -jar RunCassandraExample.jar
 ```
 ## Sample Test Results
-In order to provide an example of test results for comparison, I utilized an Amazon AMI (Amazon Linux) with a t2.small instance type.  I installed both Cassandra and MongoDB using the directions provide by either Datastax or MongoDB as an RPM.  Everything was setup using the default configuration.  I made the appropriate edits to the application.properties file and then created two separate executable JAR files using the directions above.  The following are my test results.
+In order to provide an example of test results for comparison, I utilized an Amazon AMI (Amazon Linux) with a t2.small instance type.  I installed both Cassandra and MongoDB using the directions provide by either Datastax or MongoDB as an RPM.  Everything was setup using the default configuration on a single node.  I made the appropriate edits to the application.properties file and then created two separate executable JAR files using the directions above.  The following are my test results.
 
 ### Cassandra
 ```
@@ -100,28 +100,28 @@ SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
 Cassandra version: 3.11.2
 Connected to cluster: Test Cluster
-Datacenter: datacenter1; Host: localhost; Rack: rack1
+Datacenter: datacenter1; Host: localhost/127.0.0.1; Rack: rack1
 Table myKeySpace.myTable created!
 Creating data... iterations = 1000
-Created rows = 3000 in time = 00:00:02.706
+Created rows = 3000 in time = 00:00:03.854
 Getting max value for sample...
-Max value = Row[96.0] in time = 00:00:00.002
+Max value = Row[113.0] in time = 00:00:00.006
 Getting all rows for sample...
-Row[host1, m1, Fri Jun 01 21:34:42 UTC 2018, 92.0]
-Row[host1, m1, Fri Jun 01 21:34:42 UTC 2018, 94.0]
-Row[host1, m1, Fri Jun 01 21:34:42 UTC 2018, 96.0]
-Row[host1, m1, Fri Jun 01 21:34:43 UTC 2018, 93.0]
-Row[host1, m1, Fri Jun 01 21:34:43 UTC 2018, 88.0]
-Row[host1, m1, Fri Jun 01 21:34:43 UTC 2018, 88.0]
-Row[host1, m1, Fri Jun 01 21:34:43 UTC 2018, 95.0]
-Row[host1, m1, Fri Jun 01 21:34:43 UTC 2018, 93.0]
-Row[host1, m1, Fri Jun 01 21:34:43 UTC 2018, 84.0]
-Row[host1, m1, Fri Jun 01 21:34:44 UTC 2018, 94.0]
-Row[host1, m1, Fri Jun 01 21:34:44 UTC 2018, 96.0]
-time = 00:00:00.146
+Row[host1, m1, Fri Jun 01 21:53:49 UTC 2018, 109.0]
+Row[host1, m1, Fri Jun 01 21:53:50 UTC 2018, 112.0]
+Row[host1, m1, Fri Jun 01 21:53:50 UTC 2018, 113.0]
+Row[host1, m1, Fri Jun 01 21:53:50 UTC 2018, 102.0]
+Row[host1, m1, Fri Jun 01 21:53:50 UTC 2018, 101.0]
+Row[host1, m1, Fri Jun 01 21:53:51 UTC 2018, 100.0]
+Row[host1, m1, Fri Jun 01 21:53:51 UTC 2018, 93.0]
+Row[host1, m1, Fri Jun 01 21:53:52 UTC 2018, 95.0]
+Row[host1, m1, Fri Jun 01 21:53:52 UTC 2018, 93.0]
+Row[host1, m1, Fri Jun 01 21:53:52 UTC 2018, 93.0]
+Row[host1, m1, Fri Jun 01 21:53:52 UTC 2018, 94.0]
+time = 00:00:00.054
 Select ALL...
 Got rows (without fetching) = 3000
-Returned rows = 3000, total bytes = 155676, in time = 00:00:00.104
+Returned rows = 3000, total bytes = 157206, in time = 00:00:00.180
 
 ```
 ### MongoDB
@@ -136,20 +136,25 @@ Database: test
 Collection: myCollection
 useBulkInsert: true
 Creating data... iterations = 1000
-Created rows = 3000 in time = 00:00:00.847
+Created rows = 3000 in time = 00:00:00.855
 Getting max value for sample...
-Max value = 101.0 in time = 00:00:00.010
+Max value = 122.0 in time = 00:00:00.009
 Getting all rows for sample...
-Document{{host=host1, metric=m1, time=Fri Jun 01 21:50:54 UTC 2018, value=101.0}}
-Document{{host=host1, metric=m1, time=Fri Jun 01 21:50:54 UTC 2018, value=100.0}}
-Document{{host=host1, metric=m1, time=Fri Jun 01 21:50:54 UTC 2018, value=100.0}}
-Document{{host=host1, metric=m1, time=Fri Jun 01 21:50:54 UTC 2018, value=92.0}}
-Document{{host=host1, metric=m1, time=Fri Jun 01 21:50:54 UTC 2018, value=86.0}}
-Document{{host=host1, metric=m1, time=Fri Jun 01 21:50:54 UTC 2018, value=82.0}}
-Document{{host=host1, metric=m1, time=Fri Jun 01 21:50:55 UTC 2018, value=73.0}}
-Document{{host=host1, metric=m1, time=Fri Jun 01 21:50:55 UTC 2018, value=64.0}}
-Document{{host=host1, metric=m1, time=Fri Jun 01 21:50:55 UTC 2018, value=68.0}}
-time = 00:00:00.022
+Document{{host=host1, metric=m1, time=Fri Jun 01 21:57:42 UTC 2018, value=107.0}}
+Document{{host=host1, metric=m1, time=Fri Jun 01 21:57:42 UTC 2018, value=111.0}}
+Document{{host=host1, metric=m1, time=Fri Jun 01 21:57:42 UTC 2018, value=106.0}}
+Document{{host=host1, metric=m1, time=Fri Jun 01 21:57:42 UTC 2018, value=101.0}}
+Document{{host=host1, metric=m1, time=Fri Jun 01 21:57:42 UTC 2018, value=117.0}}
+Document{{host=host1, metric=m1, time=Fri Jun 01 21:57:42 UTC 2018, value=121.0}}
+Document{{host=host1, metric=m1, time=Fri Jun 01 21:57:42 UTC 2018, value=122.0}}
+Document{{host=host1, metric=m1, time=Fri Jun 01 21:57:42 UTC 2018, value=100.0}}
+Document{{host=host1, metric=m1, time=Fri Jun 01 21:57:42 UTC 2018, value=95.0}}
+time = 00:00:00.030
 Select ALL...
-Returned rows = 3000, totalBytes = 12000, in time = 00:00:00.049
+Returned rows = 3000, totalBytes = 12000, in time = 00:00:00.044
 ```
+### Notable comparisons
+In creating 3000 rows, it took Cassandra 3.854 seconds and MongoDB 0.855 seconds.
+In selecting the max value for a sample, Cassandra 0.006 seconds and MongoDB 0.009 seconds.
+In getting all rows for a specific sample, Cassandra 0.054 seconds and MongoDB 0.030 seconds.
+In selecting all 3000 rows, Cassandra 0.180 seconds and MongoDB 0.044 seconds.
