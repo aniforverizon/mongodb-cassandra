@@ -89,8 +89,9 @@ or
 java -jar RunCassandraExample.jar
 ```
 ## Sample Test Results
-In order to provide an example of test results for comparison, I utilized an Amazon AMI (Amazon Linux) with a t2.small instance type.  I installed both Cassandra and MongoDB using the directions provide by either Datastax or MongoDB.  Everything was setup using the default configuration.  I made the appropriate edits to the application.properties file and then created two separate executable JAR files using the directions above.  The following are my test results.
+In order to provide an example of test results for comparison, I utilized an Amazon AMI (Amazon Linux) with a t2.small instance type.  I installed both Cassandra and MongoDB using the directions provide by either Datastax or MongoDB as an RPM.  Everything was setup using the default configuration.  I made the appropriate edits to the application.properties file and then created two separate executable JAR files using the directions above.  The following are my test results.
 
+### Cassandra
 ```
 Default constructor.
 Using application.properties.
@@ -99,7 +100,7 @@ SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
 Cassandra version: 3.11.2
 Connected to cluster: Test Cluster
-Datacenter: datacenter1; Host: ##############/########; Rack: rack1
+Datacenter: datacenter1; Host: localhost; Rack: rack1
 Table myKeySpace.myTable created!
 Creating data... iterations = 1000
 Created rows = 3000 in time = 00:00:02.706
@@ -122,4 +123,33 @@ Select ALL...
 Got rows (without fetching) = 3000
 Returned rows = 3000, total bytes = 155676, in time = 00:00:00.104
 
+```
+### MongoDB
+```
+Default constructor.
+Using application.properties.
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+MongoDBUri: mongodb://localhost:27017
+Database: test
+Collection: myCollection
+useBulkInsert: true
+Creating data... iterations = 1000
+Created rows = 3000 in time = 00:00:00.847
+Getting max value for sample...
+Max value = 101.0 in time = 00:00:00.010
+Getting all rows for sample...
+Document{{host=host1, metric=m1, time=Fri Jun 01 21:50:54 UTC 2018, value=101.0}}
+Document{{host=host1, metric=m1, time=Fri Jun 01 21:50:54 UTC 2018, value=100.0}}
+Document{{host=host1, metric=m1, time=Fri Jun 01 21:50:54 UTC 2018, value=100.0}}
+Document{{host=host1, metric=m1, time=Fri Jun 01 21:50:54 UTC 2018, value=92.0}}
+Document{{host=host1, metric=m1, time=Fri Jun 01 21:50:54 UTC 2018, value=86.0}}
+Document{{host=host1, metric=m1, time=Fri Jun 01 21:50:54 UTC 2018, value=82.0}}
+Document{{host=host1, metric=m1, time=Fri Jun 01 21:50:55 UTC 2018, value=73.0}}
+Document{{host=host1, metric=m1, time=Fri Jun 01 21:50:55 UTC 2018, value=64.0}}
+Document{{host=host1, metric=m1, time=Fri Jun 01 21:50:55 UTC 2018, value=68.0}}
+time = 00:00:00.022
+Select ALL...
+Returned rows = 3000, totalBytes = 12000, in time = 00:00:00.049
 ```
