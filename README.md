@@ -9,7 +9,7 @@ Requirements for using this repository include Maven and Java.
 1.  Modify the appropriate settings in pom.xml.  Modify the properties for Cassandra, notably the Cassandra URL or Contact Point.  Additionally, make similar modifications for MongoDB.  As a reference, the Cassandra code by default is using Java PreparedStatements in order to improve performance.  However, with MongoDB, you have the option of using the Bulk Insert operators.
 
 ``` 
-<plugin>
+      <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
           <systemProperties>
@@ -88,4 +88,38 @@ or
 ```
 java -jar RunCassandraExample.jar
 ```
+## Sample Test Results
+In order to provide an example of test results for comparison, I utilized an Amazon AMI (Amazon Linux) with a t2.small instance type.  I installed both Cassandra and MongoDB using the directions provide by either Datastax or MongoDB.  Everything was setup using the default configuration.  I made the appropriate edits to the application.properties file and then created two separate executable JAR files using the directions above.  The following are my test results.
 
+```
+Default constructor.
+Using application.properties.
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Cassandra version: 3.11.2
+Connected to cluster: Test Cluster
+Datacenter: datacenter1; Host: ##############/########; Rack: rack1
+Table myKeySpace.myTable created!
+Creating data... iterations = 1000
+Created rows = 3000 in time = 00:00:02.706
+Getting max value for sample...
+Max value = Row[96.0] in time = 00:00:00.002
+Getting all rows for sample...
+Row[host1, m1, Fri Jun 01 21:34:42 UTC 2018, 92.0]
+Row[host1, m1, Fri Jun 01 21:34:42 UTC 2018, 94.0]
+Row[host1, m1, Fri Jun 01 21:34:42 UTC 2018, 96.0]
+Row[host1, m1, Fri Jun 01 21:34:43 UTC 2018, 93.0]
+Row[host1, m1, Fri Jun 01 21:34:43 UTC 2018, 88.0]
+Row[host1, m1, Fri Jun 01 21:34:43 UTC 2018, 88.0]
+Row[host1, m1, Fri Jun 01 21:34:43 UTC 2018, 95.0]
+Row[host1, m1, Fri Jun 01 21:34:43 UTC 2018, 93.0]
+Row[host1, m1, Fri Jun 01 21:34:43 UTC 2018, 84.0]
+Row[host1, m1, Fri Jun 01 21:34:44 UTC 2018, 94.0]
+Row[host1, m1, Fri Jun 01 21:34:44 UTC 2018, 96.0]
+time = 00:00:00.146
+Select ALL...
+Got rows (without fetching) = 3000
+Returned rows = 3000, total bytes = 155676, in time = 00:00:00.104
+
+```
