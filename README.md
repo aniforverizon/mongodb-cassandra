@@ -154,7 +154,7 @@ Select ALL...
 Returned rows = 3000, totalBytes = 12000, in time = 00:00:00.044
 ```
 ### Notable comparisons
-In creating 3000 rows, it took Cassandra 3.854 seconds and MongoDB 0.855 seconds.
-In selecting the max value for a sample, Cassandra 0.006 seconds and MongoDB 0.009 seconds.
-In getting all rows for a specific sample, Cassandra 0.054 seconds and MongoDB 0.030 seconds.
+In creating 3000 rows, it took Cassandra 3.854 seconds and MongoDB 0.855 seconds. \
+In selecting the max value for a sample, Cassandra 0.006 seconds and MongoDB 0.009 seconds. \
+In getting all rows for a specific sample, Cassandra 0.054 seconds and MongoDB 0.030 seconds. \
 In selecting all 3000 rows, Cassandra 0.180 seconds and MongoDB 0.044 seconds.
