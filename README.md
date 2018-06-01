@@ -1,5 +1,5 @@
 # mongodb-cassandra
-Sample command line applications to compare the performance of Cassandra v MongoDB.  The code emulates IOT devices reporting metrics to be persisted in a datastore.  By default, 3 separate random measurments are made through 1000 iterations.  In all, through each execution, 3000 rows should be created in both Cassandra and MongoDB.  Both of the main classes have almost exactly the same logic except using the appropriate driver when required, i.e. the Datastax JDBC driver for Cassandra and the MongoDB Java driver for MongoDB.
+Sample command line applications to compare the performance of Cassandra v MongoDB.  The code emulates IOT devices reporting metrics to be persisted in a datastore.  By default, 3 separate random measurements are made through 1000 iterations.  In all, through each execution, 3000 rows should be created in both Cassandra and MongoDB.  Both of the main classes have almost exactly the same logic except using the appropriate driver when required, i.e. the Datastax JDBC driver for Cassandra and the MongoDB Java driver for MongoDB.
 
 Utilized the sample Cassandra Java Client created by Paul Brebner at https://www.instaclustr.com/hello-cassandra-java-client-example/ as the basis for this project.
 
