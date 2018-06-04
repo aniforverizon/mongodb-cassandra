@@ -166,4 +166,4 @@ In selecting the max value for a sample, Cassandra 0.006 seconds and MongoDB 0.0
 \
 In getting all rows for a specific sample, Cassandra 0.054 seconds and MongoDB 0.030 seconds. \
 \
-In selecting all 3000 rows, Cassandra 0.180 seconds and MongoDB 0.044 seconds. \
+In selecting all 3000 rows, Cassandra 0.180 seconds and MongoDB 0.044 seconds. 
